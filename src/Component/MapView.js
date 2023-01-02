@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Map from 'ol/Map';
 import "./mapStyle.css";
 import View from 'ol/View';
-import MapContext from '../utils/context';
+import MapContext from '../Context/MapContext';
 
 const MapView = ({ children, zoom = 2, center = [0, 0] }) => {
     const mapRef = useRef()
@@ -54,11 +54,11 @@ const MapView = ({ children, zoom = 2, center = [0, 0] }) => {
 
 
     return (
-        <MapContext value={{ map }}>
-            <div ref={mapRef}>'
+        <MapContext.Provider value={{ map }}>
+            <div ref={mapRef} className="ol-map">
                 {children}
             </div>
-        </MapContext>
+        </MapContext.Provider>
     )
 }
 
